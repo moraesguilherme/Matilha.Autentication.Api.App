@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Matilha.Autentication.Api.props" />
+</Project>

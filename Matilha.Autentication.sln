@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Matilha.Autentication.Domain", "Matilha.Autentication.Domain\Matilha.Autentication.Domain.csproj", "{70B7A558-4F80-416D-98FE-1D5C2DB1E7AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - APIs", "1 - APIs", "{3EEA218C-39AC-4AC7-B154-1D028F8D5925}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", "{BF303AA1-2B1B-420E-BF66-933163E1F210}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infrastructure", "3 - Infrastructure", "{40E4341C-F764-4262-B5B8-8A0D813C05BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Matilha.Autentication.Infrastructure", "Matilha.Autentication.Infrastructure\Matilha.Autentication.Infrastructure.csproj", "{A263F4AE-F835-4734-BF02-60D83F13114C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Matilha.Autentication.Api", "Matilha.Autentication.Api\Matilha.Autentication.Api.csproj", "{D31FF3EC-38B5-4CA2-9543-B3DFE97A1B66}"
+	ProjectSection(ProjectDependencies) = postProject
+		{70B7A558-4F80-416D-98FE-1D5C2DB1E7AA} = {70B7A558-4F80-416D-98FE-1D5C2DB1E7AA}
+		{A263F4AE-F835-4734-BF02-60D83F13114C} = {A263F4AE-F835-4734-BF02-60D83F13114C}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70B7A558-4F80-416D-98FE-1D5C2DB1E7AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70B7A558-4F80-416D-98FE-1D5C2DB1E7AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70B7A558-4F80-416D-98FE-1D5C2DB1E7AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70B7A558-4F80-416D-98FE-1D5C2DB1E7AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A263F4AE-F835-4734-BF02-60D83F13114C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A263F4AE-F835-4734-BF02-60D83F13114C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A263F4AE-F835-4734-BF02-60D83F13114C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A263F4AE-F835-4734-BF02-60D83F13114C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D31FF3EC-38B5-4CA2-9543-B3DFE97A1B66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31FF3EC-38B5-4CA2-9543-B3DFE97A1B66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D31FF3EC-38B5-4CA2-9543-B3DFE97A1B66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D31FF3EC-38B5-4CA2-9543-B3DFE97A1B66}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{70B7A558-4F80-416D-98FE-1D5C2DB1E7AA} = {BF303AA1-2B1B-420E-BF66-933163E1F210}
+		{A263F4AE-F835-4734-BF02-60D83F13114C} = {40E4341C-F764-4262-B5B8-8A0D813C05BB}
+		{D31FF3EC-38B5-4CA2-9543-B3DFE97A1B66} = {3EEA218C-39AC-4AC7-B154-1D028F8D5925}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11EB728C-EFFA-4E0B-9F36-1390AA9B9DB1}
+	EndGlobalSection
+EndGlobal
