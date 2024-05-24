@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EdwRd+8WYx885wB0tX0tRgr+9kKyrmS2t7hcKwPyT+/WhFwyWi5HBSLSRFt++hfcWS6zeTTfQMKB74DAr9P1cg==",
+  "dgSpecHash": "lOear13GyvzrE7GLWCYHnJEnWXSl4b5bzuJt+DAh10dPZncDTUwBiWnjYzkQIJpgSpUU9lme4VaZ0aUOpc9XfQ==",
   "success": true,
-  "projectFilePath": "C:\\App Matilha\\Back-end\\Matilha.Autentication\\Matilha.Autentication.Infrastructure\\Matilha.Autentication.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\App Matilha\\Back End\\Matilha.Autentication.Api.App\\Matilha.Autentication.Infrastructure\\Matilha.Autentication.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

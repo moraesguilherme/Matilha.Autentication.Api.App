@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\App Matilha\\Back-end\\Matilha.Autentication\\Matilha.Autentication.Domain\\Matilha.Autentication.Domain.csproj": {}
+    "C:\\Users\\Lenovo\\Desktop\\App Matilha\\Back End\\Matilha.Autentication.Api.App\\Matilha.Autentication.Domain\\Matilha.Autentication.Domain.csproj": {}
   },
   "projects": {
-    "C:\\App Matilha\\Back-end\\Matilha.Autentication\\Matilha.Autentication.Domain\\Matilha.Autentication.Domain.csproj": {
+    "C:\\Users\\Lenovo\\Desktop\\App Matilha\\Back End\\Matilha.Autentication.Api.App\\Matilha.Autentication.Domain\\Matilha.Autentication.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\App Matilha\\Back-end\\Matilha.Autentication\\Matilha.Autentication.Domain\\Matilha.Autentication.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\App Matilha\\Back End\\Matilha.Autentication.Api.App\\Matilha.Autentication.Domain\\Matilha.Autentication.Domain.csproj",
         "projectName": "Matilha.Autentication.Domain",
-        "projectPath": "C:\\App Matilha\\Back-end\\Matilha.Autentication\\Matilha.Autentication.Domain\\Matilha.Autentication.Domain.csproj",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\App Matilha\\Back End\\Matilha.Autentication.Api.App\\Matilha.Autentication.Domain\\Matilha.Autentication.Domain.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\App Matilha\\Back-end\\Matilha.Autentication\\Matilha.Autentication.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\App Matilha\\Back End\\Matilha.Autentication.Api.App\\Matilha.Autentication.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

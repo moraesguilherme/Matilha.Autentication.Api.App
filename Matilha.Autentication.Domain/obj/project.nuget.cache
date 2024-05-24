@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "57ZcWl7YgDbWqT9/0ClkuyIfO79NU9plXuR4ESV20gJVldqk33Nj79/1RD30+pPUwDnmxgB+niIucgO/c167ng==",
+  "dgSpecHash": "CEk+KPoX+tS06NfJUdcOTHp7LH91Ha4asWkHoO10aejs3a9tzRoJfAURnlXuZALbCMNTDVC+7qBC3KIZbC6dvA==",
   "success": true,
-  "projectFilePath": "C:\\App Matilha\\Back-end\\Matilha.Autentication\\Matilha.Autentication.Domain\\Matilha.Autentication.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\App Matilha\\Back End\\Matilha.Autentication.Api.App\\Matilha.Autentication.Domain\\Matilha.Autentication.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.5\\microsoft.aspnetcore.authentication.jwtbearer.8.0.5.nupkg.sha512",
