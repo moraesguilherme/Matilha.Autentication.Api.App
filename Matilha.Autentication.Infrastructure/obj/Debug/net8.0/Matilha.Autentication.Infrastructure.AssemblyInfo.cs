@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Matilha.Autentication.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+db9b50126c91ee4d94472c1e54a9c59b84c50a27")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d12bce13d8e1b4c000cf8dd90e985e8dcb57b62")]
 [assembly: System.Reflection.AssemblyProductAttribute("Matilha.Autentication.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Matilha.Autentication.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
