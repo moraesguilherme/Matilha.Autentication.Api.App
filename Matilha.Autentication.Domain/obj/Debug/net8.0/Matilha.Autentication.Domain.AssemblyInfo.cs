@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Matilha.Autentication.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d12bce13d8e1b4c000cf8dd90e985e8dcb57b62")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+07ca9049c15b9d0a57e7bb45952d9fe7bbe0beb3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Matilha.Autentication.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Matilha.Autentication.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
