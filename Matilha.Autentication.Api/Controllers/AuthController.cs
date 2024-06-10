@@ -17,7 +17,7 @@ namespace Matilha.Autentication.Api.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] User user)
+        public async Task<IActionResult> Login([FromBody] UserLogin user)
         {
             var token = await _authService.AuthenticateAsync(user.Username, user.PasswordHash);
 
