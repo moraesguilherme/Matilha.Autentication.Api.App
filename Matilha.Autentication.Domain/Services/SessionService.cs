@@ -17,12 +17,12 @@ namespace Matilha.Autentication.Domain.Services
             await _sessionRepository.AddSessionAsync(session);
         }
 
-        public async Task<Session> GetSessionAsync(string sessionId)
+        public async Task<Session> GetSessionAsync(Guid sessionId)
         {
             return await _sessionRepository.GetSessionAsync(sessionId);
         }
 
-        public async Task InvalidateSessionAsync(string sessionId)
+        public async Task InvalidateSessionAsync(Guid sessionId)
         {
             await _sessionRepository.InvalidateSessionAsync(sessionId);
         }

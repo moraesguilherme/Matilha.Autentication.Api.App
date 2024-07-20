@@ -17,6 +17,7 @@ namespace Matilha.Autentication.Domain.Services
         {
             var refreshToken = new RefreshToken
             {
+                Id = Guid.NewGuid(),
                 Token = Guid.NewGuid().ToString(),
                 UserId = userId,
                 CreatedAt = DateTime.UtcNow,

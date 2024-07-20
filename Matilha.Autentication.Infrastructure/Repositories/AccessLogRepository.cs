@@ -18,8 +18,8 @@ namespace Matilha.Autentication.Infrastructure.Repositories
         public async Task AddAccessLogAsync(AccessLog log)
         {
             const string sql = @"
-                INSERT INTO AccessLogs (UserId, Action, Timestamp)
-                VALUES (@UserId, @Action, @Timestamp)";
+                INSERT INTO AccessLogs (Id, UserId, Action, Timestamp)
+                VALUES (@Id, @UserId, @Action, @Timestamp)";
 
             using (var connection = new SqlConnection(_connectionString))
             {

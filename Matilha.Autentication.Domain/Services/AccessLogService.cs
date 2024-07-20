@@ -17,6 +17,7 @@ namespace Matilha.Autentication.Domain.Services
         {
             await _accessLogRepository.AddAccessLogAsync(new AccessLog
             {
+                Id = Guid.NewGuid(),
                 UserId = userId,
                 Action = action,
                 Timestamp = DateTime.UtcNow

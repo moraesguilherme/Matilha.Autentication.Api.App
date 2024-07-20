@@ -18,8 +18,8 @@ namespace Matilha.Autentication.Domain.Repositories
         public async Task AddSessionAsync(Session session)
         {
             const string sql = @"
-                INSERT INTO Sessions (UserId, Token, CreatedAt, ExpiresAt, IsValid)
-                VALUES (@UserId, @Token, @CreatedAt, @ExpiresAt, @IsValid)";
+                INSERT INTO Sessions (Id, UserId, Token, CreatedAt, ExpiresAt, IsValid)
+                VALUES (@Id, @UserId, @Token, @CreatedAt, @ExpiresAt, @IsValid)";
 
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -27,19 +27,19 @@ namespace Matilha.Autentication.Domain.Repositories
             }
         }
 
-        public async Task<Session> GetSessionAsync(string sessionId)
+        public async Task<Session> GetSessionAsync(Guid sessionId)
         {
-            const string sql = "SELECT * FROM Sessions WHERE SessionId = @SessionId AND IsValid = 1";
+            const string sql = "SELECT * FROM Sessions WHERE Id = @Id AND IsValid = 1";
 
             using (var connection = new SqlConnection(_connectionString))
             {
-                return await connection.QuerySingleOrDefaultAsync<Session>(sql, new { SessionId = sessionId });
+                return await connection.QuerySingleOrDefaultAsync<Session>(sql, new { Id = sessionId });
             }
         }
 
-        public async Task InvalidateSessionAsync(string sessionId)
+        public async Task InvalidateSessionAsync(Guid sessionId)
         {
-            const string sql = "UPDATE Sessions SET IsValid = 0 WHERE SessionId = @SessionId";
+            const string sql = "UPDATE Sessions SET IsValid = 0 WHERE Id = @SessionId";
 
             using (var connection = new SqlConnection(_connectionString))
             {

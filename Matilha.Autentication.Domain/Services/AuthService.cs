@@ -43,10 +43,11 @@ namespace Matilha.Autentication.Domain.Services
 
             var session = new Session
             {
+                Id = Guid.NewGuid(),
                 UserId = user.UserId,
                 Token = token,
                 CreatedAt = DateTime.UtcNow,
-                ExpiresAt = DateTime.UtcNow.AddMinutes(30),
+                ExpiresAt = DateTime.UtcNow.AddHours(12),
                 IsValid = true
             };
             await _sessionService.CreateSessionAsync(session);
@@ -62,6 +63,8 @@ namespace Matilha.Autentication.Domain.Services
                 return null;
 
             var company = await _userRepository.GetCompanyByNameAsync(registerUser.CompanyName);
+
+            //remover futuramente criar metodo para registrar empresa
             if (company == null)
             {
                 company = await _userRepository.AddCompanyAsync(registerUser.CompanyName);

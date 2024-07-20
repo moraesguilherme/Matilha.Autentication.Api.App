@@ -3,6 +3,6 @@
 public interface ISessionService
 {
     Task CreateSessionAsync(Session session);
-    Task InvalidateSessionAsync(string sessionId);
-    Task<Session> GetSessionAsync(string sessionId);
+    Task InvalidateSessionAsync(Guid sessionId);
+    Task<Session> GetSessionAsync(Guid sessionId);
 }

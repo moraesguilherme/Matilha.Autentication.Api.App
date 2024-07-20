@@ -18,8 +18,8 @@ namespace Matilha.Autentication.Infrastructure.Repositories
         public async Task AddRefreshTokenAsync(RefreshToken refreshToken)
         {
             const string sql = @"
-                INSERT INTO RefreshTokens (UserId, Token, CreatedAt, ExpiresAt, IsValid)
-                VALUES (@UserId, @Token, @CreatedAt, @ExpiresAt, @IsValid)";
+                INSERT INTO RefreshTokens (Id, UserId, Token, CreatedAt, ExpiresAt, IsValid)
+                VALUES (@Id, @UserId, @Token, @CreatedAt, @ExpiresAt, @IsValid)";
 
             using (var connection = new SqlConnection(_connectionString))
             {
