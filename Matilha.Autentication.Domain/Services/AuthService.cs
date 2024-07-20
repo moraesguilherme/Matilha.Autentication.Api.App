@@ -16,11 +16,19 @@ namespace Matilha.Autentication.Domain.Services
     {
         private readonly IConfiguration _config;
         private readonly IUserRepository _userRepository;
+        private readonly IRefreshTokenService _refreshTokenService;
+        private readonly ISessionService _sessionService;
+        private readonly IAccessLogService _accessLogService;
 
-        public AuthService(IConfiguration config, IUserRepository userRepository)
+        public AuthService(IConfiguration config, IUserRepository userRepository,
+            IRefreshTokenService refreshTokenService, ISessionService sessionService,
+            IAccessLogService accessLogService)
         {
             _config = config;
             _userRepository = userRepository;
+            _refreshTokenService = refreshTokenService;
+            _sessionService = sessionService;
+            _accessLogService = accessLogService;
         }
 
         public async Task<string> AuthenticateAsync(string username, string password)
@@ -29,7 +37,23 @@ namespace Matilha.Autentication.Domain.Services
             if (user == null || !VerifyPassword(password, user.PasswordHash))
                 return null;
 
-            return GenerateJwtToken(user);
+            var token = GenerateJwtToken(user);
+
+            await _accessLogService.LogAccessAsync(user.UserId, "Login");
+
+            var session = new Session
+            {
+                UserId = user.UserId,
+                Token = token,
+                CreatedAt = DateTime.UtcNow,
+                ExpiresAt = DateTime.UtcNow.AddMinutes(30),
+                IsValid = true
+            };
+            await _sessionService.CreateSessionAsync(session);
+
+            var refreshToken = await _refreshTokenService.GenerateRefreshTokenAsync(user.UserId);
+
+            return token;
         }
 
         public async Task<User> RegisterAsync(RegisterUser registerUser)

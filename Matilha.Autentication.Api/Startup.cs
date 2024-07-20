@@ -6,6 +6,8 @@ using Matilha.Autentication.Domain.Services;
 using Matilha.Autentication.Domain.Interfaces.Services;
 using Matilha.Autentication.Domain.Repositories;
 using Matilha.Autentication.Infrastructure.Config;
+using Matilha.Autentication.Domain.Interfaces.Repositories;
+using Matilha.Autentication.Infrastructure.Repositories;
 
 namespace Matilha.Autentication.Api
 {
@@ -23,7 +25,13 @@ namespace Matilha.Autentication.Api
             services.AddScoped<AppDbContext>();
 
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IAccessLogService, AccessLogService>();
+            services.AddScoped<IRefreshTokenService, RefreshTokenService>();
+            services.AddScoped<ISessionService, SessionService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAccessLogRepository, AccessLogRepository>();
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            services.AddScoped<ISessionRepository, SessionRepository>();
             services.AddControllers();
 
             var jwtSettings = Configuration.GetSection("Jwt");
@@ -50,7 +58,6 @@ namespace Matilha.Autentication.Api
                 };
             });
 
-            // Configurar Swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Matilha Authentication API", Version = "v1" });
