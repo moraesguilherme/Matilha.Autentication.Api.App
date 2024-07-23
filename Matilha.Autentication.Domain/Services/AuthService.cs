@@ -31,7 +31,7 @@ namespace Matilha.Autentication.Domain.Services
             _accessLogService = accessLogService;
         }
 
-        public async Task<string> AuthenticateAsync(string username, string password)
+        public async Task<AuthenticateResult> AuthenticateAsync(string username, string password)
         {
             var user = await _userRepository.GetUserByUsernameAsync(username);
             if (user == null || !VerifyPassword(password, user.PasswordHash))
@@ -39,22 +39,29 @@ namespace Matilha.Autentication.Domain.Services
 
             var token = GenerateJwtToken(user);
 
-            await _accessLogService.LogAccessAsync(user.UserId, "Login");
-
             var session = new Session
             {
-                Id = Guid.NewGuid(),
                 UserId = user.UserId,
+                CompanyId = user.CompanyId,
                 Token = token,
                 CreatedAt = DateTime.UtcNow,
                 ExpiresAt = DateTime.UtcNow.AddHours(12),
                 IsValid = true
             };
-            await _sessionService.CreateSessionAsync(session);
 
-            var refreshToken = await _refreshTokenService.GenerateRefreshTokenAsync(user.UserId);
+            var sessionId = await _sessionService.CreateSessionAsync(session);
 
-            return token;
+            var refreshToken = await _refreshTokenService.GenerateRefreshTokenAsync(user.UserId, user.CompanyId, sessionId);
+
+            await _accessLogService.LogAccessAsync(user.UserId, user.CompanyId, sessionId, "Login");
+
+            return new AuthenticateResult
+            {
+                Token = token,
+                RefreshToken = refreshToken.Token,
+                UserId = user.UserId,
+                SessionId = sessionId
+            };
         }
 
         public async Task<User> RegisterAsync(RegisterUser registerUser)

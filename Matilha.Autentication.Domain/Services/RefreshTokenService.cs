@@ -1,6 +1,7 @@
 ﻿using Matilha.Autentication.Domain.Interfaces.Repositories;
 using Matilha.Autentication.Domain.Interfaces.Services;
 using Matilha.Autentication.Domain.Models.Entities;
+using System.ComponentModel.Design;
 
 namespace Matilha.Autentication.Domain.Services
 {
@@ -13,13 +14,14 @@ namespace Matilha.Autentication.Domain.Services
             _refreshTokenRepository = refreshTokenRepository;
         }
 
-        public async Task<RefreshToken> GenerateRefreshTokenAsync(int userId)
+        public async Task<RefreshToken> GenerateRefreshTokenAsync(int userId, int companyId, int sessionId)
         {
             var refreshToken = new RefreshToken
             {
-                Id = Guid.NewGuid(),
-                Token = Guid.NewGuid().ToString(),
                 UserId = userId,
+                CompanyId = companyId,
+                SessionId = sessionId,
+                Token = Guid.NewGuid().ToString(),
                 CreatedAt = DateTime.UtcNow,
                 ExpiresAt = DateTime.UtcNow.AddDays(7),
                 IsValid = true

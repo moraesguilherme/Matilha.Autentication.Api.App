@@ -22,7 +22,7 @@ namespace Matilha.Autentication.Api.Controllers
         }
 
         [HttpGet("get/{sessionId}")]
-        public async Task<IActionResult> GetSession(Guid sessionId)
+        public async Task<IActionResult> GetSession(int sessionId)
         {
             var session = await _sessionService.GetSessionAsync(sessionId);
             if (session == null)
@@ -32,7 +32,7 @@ namespace Matilha.Autentication.Api.Controllers
         }
 
         [HttpPost("invalidate/{sessionId}")]
-        public async Task<IActionResult> InvalidateSession(Guid sessionId)
+        public async Task<IActionResult> InvalidateSession(int sessionId)
         {
             await _sessionService.InvalidateSessionAsync(sessionId);
             return Ok();

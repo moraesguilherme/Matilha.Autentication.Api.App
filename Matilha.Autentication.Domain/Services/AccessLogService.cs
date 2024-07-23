@@ -13,12 +13,13 @@ namespace Matilha.Autentication.Domain.Services
             _accessLogRepository = accessLogRepository;
         }
 
-        public async Task LogAccessAsync(int userId, string action)
+        public async Task LogAccessAsync(int userId, int companyId, int sessionId, string action)
         {
             await _accessLogRepository.AddAccessLogAsync(new AccessLog
             {
-                Id = Guid.NewGuid(),
                 UserId = userId,
+                CompanyId = companyId,
+                SessionId = sessionId,
                 Action = action,
                 Timestamp = DateTime.UtcNow
             });

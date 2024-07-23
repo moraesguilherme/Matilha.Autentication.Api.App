@@ -4,8 +4,8 @@ namespace Matilha.Autentication.Domain.Interfaces.Repositories
 {
     public interface ISessionRepository
     {
-        Task AddSessionAsync(Session session);
-        Task InvalidateSessionAsync(Guid sessionId);
-        Task<Session> GetSessionAsync(Guid sessionId);
+        Task<int> AddSessionAsync(Session session);
+        Task InvalidateSessionAsync(int sessionId);
+        Task<Session> GetSessionAsync(int sessionId);
     }
 }

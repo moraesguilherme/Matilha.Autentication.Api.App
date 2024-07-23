@@ -2,6 +2,7 @@
 {
     public interface IAccessLogService
     {
-        Task LogAccessAsync(int userId, string action);
+        Task LogAccessAsync(int userId, int companyId, int sessionId, string action);
     }
 }
+;

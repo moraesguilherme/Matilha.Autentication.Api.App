@@ -5,7 +5,7 @@ namespace Matilha.Autentication.Domain.Interfaces.Services
 {
     public interface IAuthService
     {
-        Task<string> AuthenticateAsync(string username, string password);
+        Task<AuthenticateResult> AuthenticateAsync(string username, string password);
         Task<User> RegisterAsync(RegisterUser registerUser);
     }
 }

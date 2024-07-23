@@ -19,12 +19,12 @@ namespace Matilha.Autentication.Api.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserLogin user)
         {
-            var token = await _authService.AuthenticateAsync(user.Username, user.PasswordHash);
+            var result = await _authService.AuthenticateAsync(user.Username, user.PasswordHash);
 
-            if (token == null)
+            if (result == null)
                 return Unauthorized();
 
-            return Ok(new { Token = token });
+            return Ok(result);
         }
 
         [HttpPost("register")]

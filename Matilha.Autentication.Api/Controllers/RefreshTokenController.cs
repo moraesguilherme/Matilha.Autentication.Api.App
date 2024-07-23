@@ -15,9 +15,9 @@ namespace Matilha.Autentication.Api.Controllers
         }
 
         [HttpPost("generate")]
-        public async Task<IActionResult> GenerateRefreshToken([FromBody] int userId)
+        public async Task<IActionResult> GenerateRefreshToken([FromBody] GenerateRefreshTokenRequest request)
         {
-            var refreshToken = await _refreshTokenService.GenerateRefreshTokenAsync(userId);
+            var refreshToken = await _refreshTokenService.GenerateRefreshTokenAsync(request.UserId, request.CompanyId, request.SessionId);
             return Ok(refreshToken);
         }
 

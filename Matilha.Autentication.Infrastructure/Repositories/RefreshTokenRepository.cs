@@ -3,6 +3,7 @@ using Matilha.Autentication.Domain.Interfaces.Repositories;
 using Matilha.Autentication.Domain.Models.Entities;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 
 namespace Matilha.Autentication.Infrastructure.Repositories
 {
@@ -18,12 +19,13 @@ namespace Matilha.Autentication.Infrastructure.Repositories
         public async Task AddRefreshTokenAsync(RefreshToken refreshToken)
         {
             const string sql = @"
-                INSERT INTO RefreshTokens (Id, UserId, Token, CreatedAt, ExpiresAt, IsValid)
-                VALUES (@Id, @UserId, @Token, @CreatedAt, @ExpiresAt, @IsValid)";
+                INSERT INTO RefreshTokens (UserId, CompanyId, SessionId, Token, CreatedAt, ExpiresAt, IsValid)
+                VALUES (@UserId, @CompanyId, @SessionId, @Token, @CreatedAt, @ExpiresAt, @IsValid);
+                SELECT CAST(SCOPE_IDENTITY() as int);";
 
             using (var connection = new SqlConnection(_connectionString))
             {
-                await connection.ExecuteAsync(sql, refreshToken);
+                refreshToken.TokenId = await connection.QuerySingleAsync<int>(sql, refreshToken);
             }
         }
 

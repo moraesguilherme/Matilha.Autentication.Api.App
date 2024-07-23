@@ -3,6 +3,7 @@ using Matilha.Autentication.Domain.Interfaces.Repositories;
 using Matilha.Autentication.Domain.Models.Entities;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 
 namespace Matilha.Autentication.Infrastructure.Repositories
 {
@@ -18,13 +19,14 @@ namespace Matilha.Autentication.Infrastructure.Repositories
         public async Task AddAccessLogAsync(AccessLog log)
         {
             const string sql = @"
-                INSERT INTO AccessLogs (Id, UserId, Action, Timestamp)
-                VALUES (@Id, @UserId, @Action, @Timestamp)";
+                INSERT INTO AccessLogs (UserId, CompanyId, SessionId, Action, Timestamp)
+                VALUES (@UserId, @CompanyId, @SessionId, @Action, @Timestamp)";
 
             using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.ExecuteAsync(sql, log);
             }
         }
+
     }
 }

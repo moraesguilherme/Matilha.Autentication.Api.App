@@ -15,31 +15,32 @@ namespace Matilha.Autentication.Domain.Repositories
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
-        public async Task AddSessionAsync(Session session)
+        public async Task<int> AddSessionAsync(Session session)
         {
             const string sql = @"
-                INSERT INTO Sessions (Id, UserId, Token, CreatedAt, ExpiresAt, IsValid)
-                VALUES (@Id, @UserId, @Token, @CreatedAt, @ExpiresAt, @IsValid)";
+                INSERT INTO Sessions (UserId, CompanyId, Token, CreatedAt, ExpiresAt, IsValid)
+                VALUES (@UserId, @CompanyId, @Token, @CreatedAt, @ExpiresAt, @IsValid);
+                SELECT CAST(SCOPE_IDENTITY() as int)";
 
             using (var connection = new SqlConnection(_connectionString))
             {
-                await connection.ExecuteAsync(sql, session);
+                return await connection.QuerySingleAsync<int>(sql, session);
             }
         }
 
-        public async Task<Session> GetSessionAsync(Guid sessionId)
+        public async Task<Session> GetSessionAsync(int sessionId)
         {
-            const string sql = "SELECT * FROM Sessions WHERE Id = @Id AND IsValid = 1";
+            const string sql = "SELECT * FROM Sessions WHERE SessionId = @SessionId AND IsValid = 1";
 
             using (var connection = new SqlConnection(_connectionString))
             {
-                return await connection.QuerySingleOrDefaultAsync<Session>(sql, new { Id = sessionId });
+                return await connection.QuerySingleOrDefaultAsync<Session>(sql, new { SessionId = sessionId });
             }
         }
 
-        public async Task InvalidateSessionAsync(Guid sessionId)
+        public async Task InvalidateSessionAsync(int sessionId)
         {
-            const string sql = "UPDATE Sessions SET IsValid = 0 WHERE Id = @SessionId";
+            const string sql = "UPDATE Sessions SET IsValid = 0 WHERE SessionId = @SessionId";
 
             using (var connection = new SqlConnection(_connectionString))
             {
