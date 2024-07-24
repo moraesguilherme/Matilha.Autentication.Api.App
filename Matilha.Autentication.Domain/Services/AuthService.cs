@@ -1,5 +1,4 @@
 ﻿using Matilha.Autentication.Domain.Models.Entities;
-using Matilha.Autentication.Domain.Models.DTOs;
 using Matilha.Autentication.Domain.Repositories;
 using Microsoft.Extensions.Configuration;
 using System.IdentityModel.Tokens.Jwt;
@@ -62,34 +61,6 @@ namespace Matilha.Autentication.Domain.Services
                 UserId = user.UserId,
                 SessionId = sessionId
             };
-        }
-
-        public async Task<User> RegisterAsync(RegisterUser registerUser)
-        {
-            if (await _userRepository.GetUserByUsernameAsync(registerUser.Username) != null)
-                return null;
-
-            var company = await _userRepository.GetCompanyByNameAsync(registerUser.CompanyName);
-
-            //remover futuramente criar metodo para registrar empresa
-            if (company == null)
-            {
-                company = await _userRepository.AddCompanyAsync(registerUser.CompanyName);
-            }
-
-            var user = new User
-            {
-                Username = registerUser.Username,
-                PasswordHash = HashPassword(registerUser.Password),
-                Email = registerUser.Email,
-                FullName = registerUser.FullName,
-                PhoneNumber = registerUser.PhoneNumber,
-                CompanyId = company.CompanyId
-            };
-
-            user.UserId = await _userRepository.AddUserAsync(user);
-
-            return user;
         }
 
         private string GenerateJwtToken(User user)

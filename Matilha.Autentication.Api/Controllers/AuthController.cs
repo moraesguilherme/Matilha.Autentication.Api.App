@@ -26,18 +26,5 @@ namespace Matilha.Autentication.Api.Controllers
 
             return Ok(result);
         }
-
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterUser registerUser)
-        {
-            var user = await _authService.RegisterAsync(registerUser);
-
-            if (user == null)
-                return BadRequest("Username already exists.");
-
-            var token = await _authService.AuthenticateAsync(user.Username, registerUser.Password);
-
-            return Ok(new { Token = token, user.UserId, user.CompanyId });
-        }
     }
 }
