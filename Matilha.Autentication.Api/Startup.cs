@@ -8,6 +8,7 @@ using Matilha.Autentication.Domain.Repositories;
 using Matilha.Autentication.Infrastructure.Config;
 using Matilha.Autentication.Domain.Interfaces.Repositories;
 using Matilha.Autentication.Infrastructure.Repositories;
+using Serilog;
 
 namespace Matilha.Autentication.Api
 {
@@ -25,14 +26,16 @@ namespace Matilha.Autentication.Api
             services.AddScoped<AppDbContext>();
 
             services.AddScoped<IAuthService, AuthService>();
-            services.AddScoped<IAccessLogService, AccessLogService>();
+            //services.AddScoped<IAccessLogService, AccessLogService>();
             services.AddScoped<IRefreshTokenService, RefreshTokenService>();
             services.AddScoped<ISessionService, SessionService>();
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IAccessLogRepository, AccessLogRepository>();
+            //services.AddScoped<IAccessLogRepository, AccessLogRepository>();
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
             services.AddScoped<ISessionRepository, SessionRepository>();
             services.AddControllers();
+
+            services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true));
 
             var jwtSettings = Configuration.GetSection("Jwt");
             var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
@@ -119,6 +122,8 @@ namespace Matilha.Autentication.Api
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSerilogRequestLogging();
 
             app.UseEndpoints(endpoints =>
             {

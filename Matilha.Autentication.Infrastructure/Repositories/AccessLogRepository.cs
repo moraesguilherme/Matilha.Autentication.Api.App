@@ -1,32 +1,32 @@
-﻿using Dapper;
-using Matilha.Autentication.Domain.Interfaces.Repositories;
-using Matilha.Autentication.Domain.Models.Entities;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
-using System.Threading.Tasks;
+﻿//using Dapper;
+//using Matilha.Autentication.Domain.Interfaces.Repositories;
+//using Matilha.Autentication.Domain.Models.Entities;
+//using Microsoft.Data.SqlClient;
+//using Microsoft.Extensions.Configuration;
+//using System.Threading.Tasks;
 
-namespace Matilha.Autentication.Infrastructure.Repositories
-{
-    public class AccessLogRepository : IAccessLogRepository
-    {
-        private readonly string _connectionString;
+//namespace Matilha.Autentication.Infrastructure.Repositories
+//{
+//    public class AccessLogRepository : IAccessLogRepository
+//    {
+//        private readonly string _connectionString;
 
-        public AccessLogRepository(IConfiguration configuration)
-        {
-            _connectionString = configuration.GetConnectionString("DefaultConnection");
-        }
+//        public AccessLogRepository(IConfiguration configuration)
+//        {
+//            _connectionString = configuration.GetConnectionString("DefaultConnection");
+//        }
 
-        public async Task AddAccessLogAsync(AccessLog log)
-        {
-            const string sql = @"
-                INSERT INTO AccessLogs (UserId, CompanyId, SessionId, Action, Timestamp)
-                VALUES (@UserId, @CompanyId, @SessionId, @Action, @Timestamp)";
+//        public async Task AddAccessLogAsync(AccessLog log)
+//        {
+//            const string sql = @"
+//                INSERT INTO AccessLogs (UserId, CompanyId, SessionId, Action, Timestamp)
+//                VALUES (@UserId, @CompanyId, @SessionId, @Action, @Timestamp)";
 
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                await connection.ExecuteAsync(sql, log);
-            }
-        }
+//            using (var connection = new SqlConnection(_connectionString))
+//            {
+//                await connection.ExecuteAsync(sql, log);
+//            }
+//        }
 
-    }
-}
+//    }
+//}

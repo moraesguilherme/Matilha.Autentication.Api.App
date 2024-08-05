@@ -8,10 +8,5 @@
         public int SessionId { get; set; }
         public string Action { get; set; }
         public DateTime Timestamp { get; set; }
-
-        // Relationships
-        public User User { get; set; }
-        public Company Company { get; set; }
-        public Session Session { get; set; }
     }
 }

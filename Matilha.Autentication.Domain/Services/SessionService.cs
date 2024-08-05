@@ -1,37 +1,53 @@
 ﻿using Matilha.Autentication.Domain.Interfaces.Repositories;
-using Matilha.Autentication.Domain.Interfaces.Services;
 using Matilha.Autentication.Domain.Models.Entities;
+using Microsoft.Extensions.Logging;
 
 namespace Matilha.Autentication.Domain.Services
 {
     public class SessionService : ISessionService
     {
         private readonly ISessionRepository _sessionRepository;
-        private readonly IAccessLogService _accessLogService;
+        private readonly ILogger<SessionService> _logger;
 
-        public SessionService(ISessionRepository sessionRepository, IAccessLogService accessLogService)
+        public SessionService(ISessionRepository sessionRepository, ILogger<SessionService> logger)
         {
             _sessionRepository = sessionRepository;
-            _accessLogService = accessLogService;
+            _logger = logger;
         }
 
         public async Task<int> CreateSessionAsync(Session session)
         {
-            return await _sessionRepository.AddSessionAsync(session);
+            _logger.LogInformation(LogMessages.Messages["CreateSessionServiceAttempt"], session.UserId);
+            var sessionId = await _sessionRepository.AddSessionAsync(session);
+            _logger.LogInformation(LogMessages.Messages["CreateSessionServiceSuccessful"], session.UserId);
+            return sessionId;
         }
 
         public async Task<Session> GetSessionAsync(int sessionId)
         {
-            return await _sessionRepository.GetSessionAsync(sessionId);
+            _logger.LogInformation(LogMessages.Messages["GetSessionServiceAttempt"], sessionId);
+            var session = await _sessionRepository.GetSessionAsync(sessionId);
+
+            if (session == null)
+            {
+                _logger.LogWarning(LogMessages.Messages["GetSessionServiceNotFound"], sessionId);
+                return null;
+            }
+
+            _logger.LogInformation(LogMessages.Messages["GetSessionServiceSuccessful"], sessionId);
+            return session;
         }
 
         public async Task InvalidateSessionAsync(int sessionId)
         {
+            _logger.LogInformation(LogMessages.Messages["InvalidateSessionServiceAttempt"], sessionId);
             var session = await GetSessionAsync(sessionId);
 
-            await _accessLogService.LogAccessAsync(session.UserId, session.CompanyId, sessionId, "Logout");
-
-            await _sessionRepository.InvalidateSessionAsync(sessionId);
+            if (session != null)
+            {
+                await _sessionRepository.InvalidateSessionAsync(sessionId);
+                _logger.LogInformation(LogMessages.Messages["InvalidateSessionServiceSuccessful"], sessionId);
+            }
         }
     }
 }

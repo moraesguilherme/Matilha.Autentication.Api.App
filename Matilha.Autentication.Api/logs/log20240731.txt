@@ -1,0 +1,32 @@
+2024-07-31 16:25:50.618 -03:00 [INF] Starting web host
+2024-07-31 16:25:59.199 -03:00 [INF] User profile is available. Using 'C:\Users\Lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-31 16:26:03.206 -03:00 [INF] Now listening on: http://localhost:5254
+2024-07-31 16:26:03.762 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-31 16:26:04.393 -03:00 [INF] Hosting environment: Development
+2024-07-31 16:26:04.397 -03:00 [INF] Content root path: C:\Users\Lenovo\Desktop\App Matilha\Back End\Matilha.Autentication.Api.App\Matilha.Autentication.Api
+2024-07-31 16:26:04.410 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/index.html - null null
+2024-07-31 16:26:05.262 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/index.html - 200 null text/html;charset=utf-8 874.8978ms
+2024-07-31 16:26:05.300 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-31 16:26:05.318 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/_framework/aspnetcore-browser-refresh.js - 200 13786 application/javascript; charset=utf-8 17.2428ms
+2024-07-31 16:26:06.462 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5254/swagger/v1/swagger.json - null null
+2024-07-31 16:26:07.300 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5254/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 837.8389ms
+2024-07-31 16:26:14.933 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5254/api/Auth/login - application/json 54
+2024-07-31 16:26:15.014 -03:00 [INF] CORS policy execution successful.
+2024-07-31 16:26:15.420 -03:00 [INF] Executing endpoint 'Matilha.Autentication.Api.Controllers.AuthController.Login (Matilha.Autentication.Api)'
+2024-07-31 16:26:15.617 -03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Matilha.Autentication.Domain.Models.Entities.UserLogin) on controller Matilha.Autentication.Api.Controllers.AuthController (Matilha.Autentication.Api).
+2024-07-31 16:26:15.728 -03:00 [INF] Tentativa de login para o usuário string
+2024-07-31 16:26:15.739 -03:00 [INF] Tentativa de autenticar o usuário string
+2024-07-31 16:26:19.830 -03:00 [INF] Token JWT gerado para o usuário 10
+2024-07-31 16:26:19.835 -03:00 [INF] Tentativa de gerar sessão para o usuário 10
+2024-07-31 16:26:19.838 -03:00 [INF] Tentativa de criar sessão no serviço para o usuário 10
+2024-07-31 16:26:19.930 -03:00 [INF] Sessão criada com sucesso no serviço para o usuário 10
+2024-07-31 16:26:19.936 -03:00 [INF] Sessão gerada com sucesso para o usuário 10
+2024-07-31 16:26:19.940 -03:00 [INF] Tentativa de gerar token de atualização para a sessão 36
+2024-07-31 16:26:19.973 -03:00 [INF] Token de atualização gerado com sucesso para a sessão 36
+2024-07-31 16:26:19.975 -03:00 [INF] Autenticação bem-sucedida para o usuário string
+2024-07-31 16:26:19.979 -03:00 [INF] Login bem-sucedido para o usuário string
+2024-07-31 16:26:20.001 -03:00 [INF] Executing OkObjectResult, writing value of type 'AuthenticateResult'.
+2024-07-31 16:26:20.015 -03:00 [INF] Executed action Matilha.Autentication.Api.Controllers.AuthController.Login (Matilha.Autentication.Api) in 4388.0815ms
+2024-07-31 16:26:20.021 -03:00 [INF] Executed endpoint 'Matilha.Autentication.Api.Controllers.AuthController.Login (Matilha.Autentication.Api)'
+2024-07-31 16:26:20.025 -03:00 [INF] HTTP POST /api/Auth/login responded 200 in 4608.5390 ms
+2024-07-31 16:26:20.031 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5254/api/Auth/login - 200 null application/json; charset=utf-8 5097.8334ms
