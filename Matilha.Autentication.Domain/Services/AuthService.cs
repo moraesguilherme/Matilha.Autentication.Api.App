@@ -1,17 +1,18 @@
 ﻿using Matilha.Autentication.Domain.Interfaces.Repositories;
 using Matilha.Autentication.Domain.Interfaces.Services;
 using Matilha.Autentication.Domain.Models.Entities;
-using Matilha.Autentication.Domain.Repositories;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
-using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using System.Net.Http;
+using Newtonsoft.Json;
+using Matilha.Autentication.Domain.Repositories;
 
 namespace Matilha.Autentication.Domain.Services
 {
@@ -21,16 +22,20 @@ namespace Matilha.Autentication.Domain.Services
         private readonly IUserRepository _userRepository;
         private readonly IRefreshTokenService _refreshTokenService;
         private readonly ISessionService _sessionService;
+        private readonly IUserPreferencesService _userPreferencesService;
+        private readonly HttpClient _httpClient;
         private readonly ILogger<AuthService> _logger;
 
         public AuthService(IConfiguration config, IUserRepository userRepository,
-            IRefreshTokenService refreshTokenService, ISessionService sessionService,
-            ILogger<AuthService> logger)
+            IRefreshTokenService refreshTokenService, ISessionService sessionService, IUserPreferencesService userPreferencesService,
+            HttpClient httpClient, ILogger<AuthService> logger)
         {
             _config = config;
             _userRepository = userRepository;
             _refreshTokenService = refreshTokenService;
             _sessionService = sessionService;
+            _userPreferencesService = userPreferencesService;
+            _httpClient = httpClient;
             _logger = logger;
         }
 
@@ -65,6 +70,12 @@ namespace Matilha.Autentication.Domain.Services
             var refreshToken = await _refreshTokenService.GenerateRefreshTokenAsync(user.UserId, user.CompanyId, sessionId);
             _logger.LogInformation(LogMessages.Messages["GenerateRefreshTokenForSessionSuccessful"], sessionId);
 
+            var preferences = await _userPreferencesService.GetUserPreferencesAsync(user.UserId, token);
+            if (preferences != null)
+            {
+                _logger.LogInformation(LogMessages.Messages["UserPreferencesFetched"], user.UserId);
+            }
+
             _logger.LogInformation(LogMessages.Messages["AuthenticateUserSuccessful"], username);
 
             return new AuthenticateResult
@@ -72,7 +83,8 @@ namespace Matilha.Autentication.Domain.Services
                 Token = token,
                 RefreshToken = refreshToken.Token,
                 UserId = user.UserId,
-                SessionId = sessionId
+                SessionId = sessionId,
+                UserPreferences = preferences
             };
         }
 

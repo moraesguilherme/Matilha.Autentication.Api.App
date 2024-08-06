@@ -28,14 +28,15 @@
             { "GetSessionServiceSuccessful", "Sessão obtida com sucesso no serviço com ID {SessionId}" },
             { "InvalidateSessionServiceAttempt", "Tentativa de invalidar sessão no serviço com ID {SessionId}" },
             { "InvalidateSessionServiceSuccessful", "Sessão invalidada com sucesso no serviço com ID {SessionId}" },
-            { "AuthenticateUserAttempt", "Tentativa de autenticar o usuário {Username}" },
-            { "AuthenticateUserFailed", "Falha na autenticação do usuário {Username}" },
+            { "AuthenticateUserAttempt", "Tentativa de autenticação para o usuário {Username}" },
+            { "AuthenticateUserFailed", "Falha na autenticação para o usuário {Username}" },
             { "AuthenticateUserSuccessful", "Autenticação bem-sucedida para o usuário {Username}" },
             { "GenerateJwtToken", "Token JWT gerado para o usuário {UserId}" },
             { "GenerateSessionAttempt", "Tentativa de gerar sessão para o usuário {UserId}" },
             { "GenerateSessionSuccessful", "Sessão gerada com sucesso para o usuário {UserId}" },
             { "GenerateRefreshTokenForSessionAttempt", "Tentativa de gerar token de atualização para a sessão {SessionId}" },
-            { "GenerateRefreshTokenForSessionSuccessful", "Token de atualização gerado com sucesso para a sessão {SessionId}" }
+            { "GenerateRefreshTokenForSessionSuccessful", "Token de atualização gerado com sucesso para a sessão {SessionId}" },
+            { "UserPreferencesFetched", "Preferências do usuário {UserId} obtidas com sucesso" }
         };
     }
 }

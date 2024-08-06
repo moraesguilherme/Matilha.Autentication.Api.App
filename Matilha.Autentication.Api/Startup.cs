@@ -34,6 +34,7 @@ namespace Matilha.Autentication.Api
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
             services.AddScoped<ISessionRepository, SessionRepository>();
             services.AddControllers();
+            services.AddHttpClient<IUserPreferencesService, UserPreferencesService>();
 
             services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true));
 
